@@ -54,7 +54,7 @@
 		
 		$("#chart12").html('');
                 Nwagon.chart(options);
-            });
+            }).always(function(){console.log("always");});
 		console.log(3);
         }
 
