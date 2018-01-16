@@ -1,0 +1,61 @@
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Nwagon demo</title>
+
+	<style>
+		*{margin:0;padding:0;}
+		div{padding:0px; overflow: hidden; height: auto;}
+		.hgroup{padding:20px;background-color:#e9e9e9;}
+		.hgroup h1{font-family:Tahoma;}
+		.hgroup p{margin:10px 0;font-size:10px}
+		h2{margin:0;padding:20px;border:1px solid #000;background-color:#f9f9f9;border-width:1px 0;font-family:Tahoma;}
+	</style>
+
+	<link rel='stylesheet' href='Nwagon.css' type='text/css'>
+	<script src='https://minijina.github.io/Nwagon.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+<body>
+	
+	<h2>TEST</h2>
+	<h2>Radar Chart with dimmed background</h2>
+    <div id="chart12"></div>
+    <input type="button" value="눌러눌러" onclick="changeData()">
+	<script>
+
+		var options = {
+			'legend':{
+				names: ['Perceivable', 'Information', 'Understandable', 'Enough', 'Epilepsy', 'Operable', 'Navigation','Error'],
+				hrefs: []
+					},
+			'dataset': {
+				title: 'Web accessibility status',
+				values: [['n/a',53,67,23,78, 55, 45, 89]], 
+				bgColor: '#f9f9f9',
+				fgColor: '#cc79a7'
+			},
+			'chartDiv': 'chart12',
+			'chartType': 'radar',
+			'chartSize': {width:600, height:300}
+		};
+
+        Nwagon.chart(options);
+        
+        function changeData() {
+            $.get("https://minijina.github.io/data2.json", function(data) {
+                console.log(data);
+
+                options.legend.names = data.names;
+                options.dataset.values = data.values;
+
+                chart.validateData();
+            });
+        }
+
+	</script>
+ 
+</body>
+</html>
