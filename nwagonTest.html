@@ -44,15 +44,18 @@
         Nwagon.chart(options);
         
         function changeData() {
+	    console.log(1);
             $.get("https://minijina.github.io/data2.json", function(data) {
+		    console.log(2);
                 console.log(data);
 
                 options.legend.names = data.names;
                 options.dataset.values = data.values;
 		
-		//$("#chart12").html('');
+		$("#chart12").html('');
                 Nwagon.chart(options);
             });
+		console.log(3);
         }
 
 	</script>
